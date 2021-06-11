@@ -32,6 +32,8 @@ Widget _buildBody() {
               _citySearch(),
               _cityDetail(),
               _temperatureDetail(),
+              _extraWeatherDetail(),
+              _sevenDayWeatherTitle(),
             ],
           ),
         ))
@@ -40,13 +42,156 @@ Widget _buildBody() {
   );
 }
 
+class _sevenDayWeatherTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '7-DAY WEATHER FORECAST',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _extraWeatherDetail extends StatelessWidget {
+  @override
+  Widget build(Object context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Column(
+            children: [
+              Icon(
+                Icons.ac_unit_sharp,
+                color: Colors.white,
+                size: 32.0,
+              ),
+              Text(
+                '5',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
+              ),
+              Text(
+                'km/hr',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Icon(
+                Icons.ac_unit_sharp,
+                color: Colors.white,
+                size: 32.0,
+              ),
+              Text(
+                '3',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
+              ),
+              Text(
+                '%',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Icon(
+                Icons.ac_unit_sharp,
+                color: Colors.white,
+                size: 32.0,
+              ),
+              Text(
+                '20',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
+              ),
+              Text(
+                '%',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _temperatureDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(Icons.wb_sunny, style:),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.wb_sunny,
+                color: Colors.white,
+                size: 64.0,
+              ),
+            ],
+          ),
+          SizedBox(
+            width: 16.0,
+          ),
+          Column(
+            children: [
+              Row(
+                children: <Widget>[
+                  Text(
+                    '14 °F',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 36.0,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'LIGHT SNOW',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
