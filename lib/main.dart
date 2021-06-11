@@ -31,12 +31,24 @@ Widget _buildBody() {
             children: [
               _citySearch(),
               _cityDetail(),
+              _temperatureDetail(),
             ],
           ),
         ))
       ],
     ),
   );
+}
+
+class _temperatureDetail extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(Icons.wb_sunny, style:),
+      ],
+    );
+  }
 }
 
 class _cityDetail extends StatelessWidget {
