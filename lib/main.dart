@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,10 +35,86 @@ Widget _buildBody() {
               _temperatureDetail(),
               _extraWeatherDetail(),
               _sevenDayWeatherTitle(),
+              _bottomDetail(),
             ],
           ),
         ))
       ],
+    ),
+  );
+}
+
+class _bottomDetail extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return _myListView();
+  }
+}
+
+// Widget _myListView() {
+//   return ListView(
+//     padding: EdgeInsets.all(8.0),
+//     // shrinkWrap: true,
+//     // scrollDirection: Axis.horizontal,
+//     // itemExtent: 300,
+//     children: [
+//       ListTile(
+//         title: Text('XXX'),
+//         leading: Icon(Icons.insert_photo, color: Colors.red),
+//         trailing: Icon(Icons.keyboard_arrow_left),
+//       ),
+//       ListTile(
+//         title: Text('XXX'),
+//         leading: Icon(Icons.insert_photo, color: Colors.red),
+//         trailing: Icon(Icons.keyboard_arrow_left),
+//       ),
+//       ListTile(
+//         title: Text('XXX'),
+//         leading: Icon(Icons.insert_photo, color: Colors.red),
+//         trailing: Icon(Icons.keyboard_arrow_left),
+//       ),
+//     ],
+//   );
+// }
+
+Widget _myListView() {
+  final List<String> items = List<String>.generate(7, (i) => 'Item $i');
+  final List<String> daysOfWeek = [
+    'Friday',
+    'Saturday',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday'
+  ];
+  return Container(
+    height: 120,
+    width: double.infinity,
+    // width: 300,
+    child: ListView.builder(
+      itemExtent: 180,
+      scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return Card(
+          // color: Color(0xffe57373),
+          color: Colors.pink[200],
+          child: ListTile(
+            title: Text(
+              '${daysOfWeek[index]}',
+              style: TextStyle(color: Colors.white, fontSize: 10.0),
+            ),
+            subtitle: Text(
+              '6 F',
+              style: TextStyle(color: Colors.white, fontSize: 10.0),
+            ),
+            // leading: Icon(Icons.insert_photo, color: Colors.red),
+            // trailing: Icon(Icons.keyboard_arrow_left),
+          ),
+        );
+      },
     ),
   );
 }
