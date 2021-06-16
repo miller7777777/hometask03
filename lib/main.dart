@@ -88,6 +88,8 @@ Widget _myListView() {
     'Wednesday',
     'Thursday'
   ];
+
+  final List<int> temperatures = [5, 6, 22, 18, 7, 7, 7];
   return Container(
     height: 120,
     width: double.infinity,
@@ -98,25 +100,43 @@ Widget _myListView() {
       shrinkWrap: true,
       itemCount: items.length,
       itemBuilder: (context, index) {
-        return Card(
-          // color: Color(0xffe57373),
-          color: Colors.pink[200],
-          child: ListTile(
-            title: Text(
-              '${daysOfWeek[index]}',
-              style: TextStyle(color: Colors.white, fontSize: 10.0),
-            ),
-            subtitle: Text(
-              '6 F',
-              style: TextStyle(color: Colors.white, fontSize: 10.0),
-            ),
-            // leading: Icon(Icons.insert_photo, color: Colors.red),
-            // trailing: Icon(Icons.keyboard_arrow_left),
-          ),
+        return BottomDetailItem(
+          daysOfWeek: daysOfWeek,
+          index: index,
+          temp: temperatures,
         );
       },
     ),
   );
+}
+
+class BottomDetailItem extends StatelessWidget {
+  const BottomDetailItem(
+      {required this.daysOfWeek, required this.index, required this.temp});
+
+  final List<String> daysOfWeek;
+  final int index;
+  final List<int> temp;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      // color: Color(0xffe57373),
+      color: Colors.pink[200],
+      child: ListTile(
+        title: Text(
+          '${daysOfWeek[index]}',
+          style: TextStyle(color: Colors.white, fontSize: 10.0),
+        ),
+        subtitle: Text(
+          '${temp[index]} °F',
+          style: TextStyle(color: Colors.white, fontSize: 10.0),
+        ),
+        // leading: Icon(Icons.insert_photo, color: Colors.red),
+        // trailing: Icon(Icons.keyboard_arrow_left),
+      ),
+    );
+  }
 }
 
 class _sevenDayWeatherTitle extends StatelessWidget {
