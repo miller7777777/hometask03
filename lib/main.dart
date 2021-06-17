@@ -95,7 +95,7 @@ Widget _myListView() {
     width: double.infinity,
     // width: 300,
     child: ListView.builder(
-      itemExtent: 180,
+      itemExtent: 160,
       scrollDirection: Axis.horizontal,
       shrinkWrap: true,
       itemCount: items.length,
@@ -121,21 +121,53 @@ class BottomDetailItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // color: Color(0xffe57373),
-      color: Colors.pink[200],
-      child: ListTile(
-        title: Text(
-          '${daysOfWeek[index]}',
-          style: TextStyle(color: Colors.white, fontSize: 10.0),
+        shape: RoundedRectangleBorder(
+          // side: BorderSide(color: Colors.white70, width: 1),
+          borderRadius: BorderRadius.circular(0),
         ),
-        subtitle: Text(
-          '${temp[index]} °F',
-          style: TextStyle(color: Colors.white, fontSize: 10.0),
-        ),
-        // leading: Icon(Icons.insert_photo, color: Colors.red),
-        // trailing: Icon(Icons.keyboard_arrow_left),
-      ),
-    );
+        // color: Color(0xffe57373),
+        color: Color(0xffffcdd2).withOpacity(0.8),
+        // color: Colors.pink[200],
+        // color: Colors.red[200],
+        // color: Colors.transparent,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 4.0, left: 8.0, right: 8.0, bottom: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${daysOfWeek[index]}',
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${temp[index]} °F',
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                    Icon(
+                      Icons.wb_sunny,
+                      color: Colors.white,
+                      size: 36.0,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }
 
